@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}{% block content %}
+<section class="hero p-5 rounded-4"><h1 class="display-5 fw-bold">Student Project Tracking System</h1><p class="lead">A shared space for classes, attendance, teamwork, submissions and feedback.</p>
+{% if current_user.is_authenticated %}<a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}">Open dashboard</a>{% else %}<a class="btn btn-primary btn-lg me-2" href="{{ url_for('auth.register') }}">Get started</a><a class="btn btn-outline-dark btn-lg" href="{{ url_for('auth.login') }}">Log in</a>{% endif %}</section>
+<div class="row g-3 mt-3">{% for title, desc in [('Attendance','Teachers record attendance; students track their own records.'),('Collaboration','Create projects, invite classmates and manage tasks.'),('Evaluation','Submit files and receive teacher marks and feedback.'),('Activity history','Review a project timeline of important changes.')] %}
+<div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><h5>{{ title }}</h5><p class="mb-0 text-muted">{{ desc }}</p></div></div>{% endfor %}</div>{% endblock %}
