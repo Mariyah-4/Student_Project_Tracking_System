@@ -1,1 +1,1 @@
-
+{% extends "base.html" %}{% block content %}<h1>My attendance · {{ classroom.name }}</h1><div class="card p-3 mb-3"><h2>{{ stats.percentage }}%</h2><p class="mb-0">{{ stats.attended }} attended out of {{ stats.total }} recorded classes. Late counts as attended.</p></div>{% for r in records %}<div class="card p-3 mb-2">{{ r.attendance_date }} · <b>{{ r.status|title }}</b></div>{% else %}<p>No attendance records yet.</p>{% endfor %}{% endblock %}
