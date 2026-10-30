@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}<div class="form-card"><h2>Create account</h2><form method="post">{{ form.hidden_tag() }}
+{% for field in [form.name, form.email, form.role, form.student_id, form.password, form.confirm_password] %}<div class="mb-3">{{ field.label(class="form-label") }}{{ field(class="form-control" if field.type != 'SelectField' else 'form-select') }}{% for e in field.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}</div>{% endfor %}
+{{ form.submit(class="btn btn-primary w-100") }}</form></div>{% endblock %}
