@@ -5,7 +5,7 @@ import pytest
 
 # Add the project root directory to Python's import path.
 
-PROJECT_ROOT = Path(**file**).resolve().parents[1]
+PROJECT_ROOT = Path(file).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from app import create_app
@@ -16,7 +16,6 @@ def app():
 """Create and configure a new application instance for each test."""
 app = create_app("development")
 
-```
 app.config.update(
     TESTING=True,
     WTF_CSRF_ENABLED=False,
@@ -29,7 +28,6 @@ with app.app_context():
     yield app
     db.session.remove()
     db.drop_all()
-```
 
 @pytest.fixture()
 def client(app):
