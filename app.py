@@ -42,12 +42,15 @@ def create_app(config_name=None):
 
     @app.cli.command("init-db")
     def init_db():
-        """Create database tables for a fresh local database."""
+        """Create database tables for a fresh database."""
+        import models
+
         with app.app_context():
             db.create_all()
+
         print("Database tables created.")
 
-    return app
+        return app
 
 app = create_app()
 
